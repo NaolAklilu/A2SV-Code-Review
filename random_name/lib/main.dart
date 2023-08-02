@@ -123,7 +123,7 @@ class GeneratorPage extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Text(pair.asLowerCase),
+          BigCard(pair: pair),
           SizedBox(height: 10),
           Row(
             mainAxisSize: MainAxisSize.min,
@@ -145,6 +145,30 @@ class GeneratorPage extends StatelessWidget {
             ],
           ),
         ],
+      ),
+    );
+  }
+}
+
+class BigCard extends StatelessWidget {
+  const BigCard({
+    super.key,
+    required this.pair,
+  });
+
+  final WordPair pair;
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      color: Colors.deepOrange,
+      child: Padding(
+        padding: const EdgeInsets.all(20.0),
+        child: Text(
+          style: TextStyle(color: const Color.fromARGB(255, 223, 217, 217)),
+          pair.asLowerCase,
+          semanticsLabel: pair.first,
+        ),
       ),
     );
   }
