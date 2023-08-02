@@ -96,7 +96,16 @@ class _MyHomePageState extends State<MyHomePage> {
             Expanded(
               child: Container(
                 color: Theme.of(context).colorScheme.primaryContainer,
-                child: page,
+                child: Column(children: [
+                  SafeArea(
+                      child: Card(
+                    child: Padding(
+                      padding: const EdgeInsets.all(20.0),
+                      child: Text("Hello, Welcome to Random Name Generator!"),
+                    ),
+                  )),
+                  Expanded(child: page)
+                ]),
               ),
             ),
           ],
