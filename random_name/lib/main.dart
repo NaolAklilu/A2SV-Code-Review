@@ -123,7 +123,7 @@ class GeneratorPage extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          BigCard(pair: pair),
+          GeneratedText(pair: pair),
           SizedBox(height: 10),
           Row(
             mainAxisSize: MainAxisSize.min,
@@ -150,8 +150,8 @@ class GeneratorPage extends StatelessWidget {
   }
 }
 
-class BigCard extends StatelessWidget {
-  const BigCard({
+class GeneratedText extends StatelessWidget {
+  const GeneratedText({
     super.key,
     required this.pair,
   });
@@ -160,12 +160,16 @@ class BigCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final style = theme.textTheme.displayMedium!
+        .copyWith(color: theme.colorScheme.onPrimary);
+
     return Card(
-      color: Colors.deepOrange,
+      color: theme.colorScheme.primary,
       child: Padding(
         padding: const EdgeInsets.all(20.0),
         child: Text(
-          style: TextStyle(color: const Color.fromARGB(255, 223, 217, 217)),
+          style: style,
           pair.asLowerCase,
           semanticsLabel: pair.first,
         ),
